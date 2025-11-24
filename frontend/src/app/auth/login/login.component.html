@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-success fw-bold">Iniciar sesión en Mundialízate</h2>
+
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="mx-auto shadow p-4 rounded"
+    style="max-width: 400px; background-color: #f9f9f9;"
+  >
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        placeholder="Ej. usuario@correo.com"
+      />
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger small">
+        Ingresa un correo válido.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label fw-semibold">Contraseña</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+        placeholder="Mínimo 8 caracteres"
+      />
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger small">
+        La contraseña debe tener al menos 8 caracteres.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="loginForm.invalid">
+      <i class="bi bi-box-arrow-in-right me-2"></i> Entrar
+    </button>
+
+    
+  </form>
+  <!-- 🔹 Botón de registrarse -->
+     <div class="text-center mt-3">
+        <p class="mb-1">¿Aún no tienes cuenta?</p>
+         
+        <a class="btn btn-success" routerLink="/registro">Registrarse</a>
+
+      
+      </div>
+</div>
