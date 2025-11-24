@@ -1,0 +1,21 @@
+.custom-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
