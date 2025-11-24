@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="logo">
+    <a routerLink="/inicio">Mundialízate</a>
+  </div>
+
+  <nav>
+    <a routerLink="/inicio">Inicio</a>
+    <a routerLink="/categorias">Categorías</a>
+    <a routerLink="/calendario">Calendario</a>
+    <a routerLink="/perfil" *ngIf="auth.isLogged()">Mi Perfil</a>
+
+    <!-- 🔹 Si NO está logueado, mostrar botón de iniciar sesión -->
+    <a routerLink="/iniciar-sesion" *ngIf="!auth.isLogged()">Iniciar sesión</a>
+
+    <!-- 🔹 Si SÍ está logueado, mostrar botón de cerrar sesión -->
+    <button class="btn btn-danger" *ngIf="auth.isLogged()" (click)="logout()">
+      Cerrar sesión
+    </button>
+  </nav>
+</header>
+
