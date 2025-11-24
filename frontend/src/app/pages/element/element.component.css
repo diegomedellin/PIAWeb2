@@ -1,0 +1,24 @@
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card {
+  border-radius: 15px;
+}
+
+.card-img-top {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.btn {
+  width: 50%;
+}
