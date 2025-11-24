@@ -1,0 +1,15 @@
+<div *ngIf="!userLoginOn" class="dashboard-container">
+  <h2 class="dashboard-title text-center mb-4 fw-bold text-success">
+    Explora Mundialízate
+  </h2>
+  <div class="card-container">
+    <div *ngFor="let card of cards" class="card custom-card">
+      <img [src]="card.image" class="card-img-top" [alt]="card.title">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.text }}</p>
+        <a  routerLink="/elemento" class="btn" [ngClass]="card.color">{{ card.btn }}</a>
+      </div>
+    </div>
+  </div>
+</div>
