@@ -1,0 +1,19 @@
+<div class="container mt-5">
+<div class="card mx-auto mt-5 shadow" style="max-width: 600px;">
+  <img *ngIf="evento" [src]="evento.imagen" class="card-img-top" [alt]="evento.titulo" />
+  <div class="card-body">
+    <h3 class="card-title text-center text-success">{{ evento.titulo }}</h3>
+    <p class="card-text mt-3">{{ evento.descripcion }}</p>
+
+    <ul class="list-group list-group-flush mt-3">
+      <li class="list-group-item"><strong>Fecha:</strong> {{ evento.fecha }}</li>
+      <li class="list-group-item"><strong>Hora:</strong> {{ evento.hora }}</li>
+      <li class="list-group-item"><strong>Locación:</strong> {{ evento.locacion }}</li>
+    </ul>
+
+    <div class="text-center mt-3">
+      <button class="btn btn-success" (click)="reservar()">Reservar</button>
+    </div>
+  </div>
+</div>
+</div>
