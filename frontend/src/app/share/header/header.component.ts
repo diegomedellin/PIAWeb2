@@ -18,8 +18,13 @@ export class HeaderComponent {
   ) {}
 
   logout() {
-    this.auth.logout();       // elimina token
-    this.router.navigate(['/iniciar-sesion']);  // redirige
+    this.auth.logout();
+    this.router.navigate(['/iniciar-sesion']);
   }
+
+  isLogged() {
+    return this.auth.isLogged();
+  }
+
 }
 

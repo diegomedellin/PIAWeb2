@@ -17,3 +17,73 @@
   </div>
 </div>
 </div>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <h4 class="mb-3">Comentarios</h4>
+
+      <!-- Formulario de nuevo comentario -->
+      <div *ngIf="authService.isLogged(); else noLogin">
+        <textarea class="form-control mb-2" rows="3" placeholder="Escribe un comentario..."
+                  [(ngModel)]="nuevoComentario"></textarea>
+
+        <button class="btn btn-success"
+                (click)="enviarComentario()"
+                [disabled]="!nuevoComentario.trim()">
+          Publicar comentario
+        </button>
+      </div>
+
+      <ng-template #noLogin>
+        <p class="text-muted mt-3">
+          <a routerLink="/iniciar-sesion">Inicia sesión</a> para comentar.
+        </p>
+      </ng-template>
+
+      <hr>
+
+      <!-- Lista de comentarios -->
+      <div *ngIf="comentarios.length === 0" class="text-muted">
+        Aún no hay comentarios.
+      </div>
+
+      <div *ngFor="let c of comentarios" class="border rounded p-2 mb-3">
+
+        <div class="fw-bold">{{ c.usuario?.nombre }}</div>
+        <div class="text-muted small">
+          {{ c.createdAt | date:'short' }}
+        </div>
+
+        <p>{{ c.texto }}</p>
+
+        <!-- Botón responder -->
+        <button *ngIf="authService.isLogged()" class="btn btn-link p-0 mb-2"
+                (click)="toggleRespuesta(c._id)">
+          Responder
+        </button>
+
+        <!-- Formulario respuesta -->
+        <div *ngIf="respuestasAbiertas[c._id]" class="ms-3">
+          <textarea class="form-control form-control-sm mb-2" rows="2"
+                    [(ngModel)]="nuevaRespuesta[c._id]"
+                    placeholder="Escribe una respuesta..."></textarea>
+
+          <button class="btn btn-success btn-sm"
+                  (click)="enviarRespuesta(c._id)"
+                  [disabled]="!nuevaRespuesta[c._id]?.trim()">
+            Enviar
+          </button>
+        </div>
+
+        <!-- Respuestas -->
+        <div *ngFor="let r of c.respuestas" class="ms-3 border-start ps-2 mt-2">
+          <div class="fw-bold">{{ r.usuario?.nombre }}</div>
+          <div class="text-muted small">{{ r.createdAt | date:'short' }}</div>
+          <p>{{ r.texto }}</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

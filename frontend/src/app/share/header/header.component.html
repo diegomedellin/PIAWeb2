@@ -1,21 +1,58 @@
-<header class="header">
-  <div class="logo">
-    <a routerLink="/inicio">Mundialízate</a>
+<header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 py-3">
+  <a class="navbar-brand fw-bold text-success" routerLink="/inicio">
+    🌍 MUNDIALÍZATE
+  </a>
+
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <!-- LINKS IZQUIERDA -->
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/inicio">Inicio</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/calendario">Calendario</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/categorias">Categorías</a>
+      </li>
+
+      <li *ngIf="isLogged()" class="nav-item">
+        <a class="nav-link" routerLink="/perfil">Mi perfil</a>
+      </li>
+    </ul>
+
+    <!-- BUSCADOR -->
+    <form class="d-flex me-3">
+      <input class="form-control me-2" type="search" placeholder="Buscar..." />
+      <button class="btn btn-success" type="button">Buscar</button>
+    </form>
+
+    <!-- BOTONES DERECHA -->
+    <div>
+      <!-- SI NO ESTÁ LOGEADO -->
+      <a *ngIf="!isLogged()" routerLink="/iniciar-sesion" class="btn btn-danger">
+        Iniciar sesión
+      </a>
+
+      <!-- SI ESTÁ LOGEADO -->
+      <button *ngIf="isLogged()" (click)="logout()" class="btn btn-danger">
+        Cerrar sesión
+      </button>
+    </div>
   </div>
-
-  <nav>
-    <a routerLink="/inicio">Inicio</a>
-    <a routerLink="/categorias">Categorías</a>
-    <a routerLink="/calendario">Calendario</a>
-    <a routerLink="/perfil" *ngIf="auth.isLogged()">Mi Perfil</a>
-
-    <!-- 🔹 Si NO está logueado, mostrar botón de iniciar sesión -->
-    <a routerLink="/iniciar-sesion" *ngIf="!auth.isLogged()">Iniciar sesión</a>
-
-    <!-- 🔹 Si SÍ está logueado, mostrar botón de cerrar sesión -->
-    <button class="btn btn-danger" *ngIf="auth.isLogged()" (click)="logout()">
-      Cerrar sesión
-    </button>
-  </nav>
 </header>
+
+
 

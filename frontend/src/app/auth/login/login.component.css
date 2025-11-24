@@ -1,0 +1,26 @@
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form {
+  transition: transform 0.2s ease;
+}
+
+form:hover {
+  transform: translateY(-3px);
+}
+
+button, a.btn {
+  font-weight: 600;
+}
+
+
+.login-title {
+  z-index: 10; 
+  position: relative;
+   margin-top: 40px; 
+  }
+
