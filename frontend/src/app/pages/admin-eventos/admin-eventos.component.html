@@ -1,0 +1,61 @@
+<div class="container mt-4">
+
+  <h2 class="text-success">Panel de Administración de Eventos</h2>
+
+  <hr>
+
+  <!-- FORMULARIO CREAR -->
+  <h4>Crear Evento</h4>
+
+  <div class="card p-3 mb-4">
+    <input class="form-control mb-2" placeholder="Título" [(ngModel)]="nuevoEvento.titulo">
+    <textarea class="form-control mb-2" placeholder="Descripción" [(ngModel)]="nuevoEvento.descripcion"></textarea>
+    <input class="form-control mb-2" placeholder="URL Imagen" [(ngModel)]="nuevoEvento.imagen">
+    <input type="date" class="form-control mb-2" [(ngModel)]="nuevoEvento.fecha">
+    <input class="form-control mb-2" placeholder="Hora" [(ngModel)]="nuevoEvento.hora">
+    <input class="form-control mb-2" placeholder="Locación" [(ngModel)]="nuevoEvento.locacion">
+
+    <button class="btn btn-success" (click)="crearEvento()">Crear Evento</button>
+  </div>
+
+  <hr>
+
+  <!-- LISTADO DE EVENTOS -->
+  <h4>Eventos Existentes</h4>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let ev of eventos">
+      <div class="card mb-3">
+        <img [src]="ev.imagen" class="card-img-top">
+        <div class="card-body">
+          <h5>{{ ev.titulo }}</h5>
+          <p>{{ ev.descripcion }}</p>
+
+          <button class="btn btn-primary w-100" (click)="seleccionarEditar(ev)">
+            Editar
+          </button>
+
+          <button class="btn btn-danger w-100 mt-2" (click)="eliminarEvento(ev._id)">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edición -->
+  <div *ngIf="editando" class="card p-3 mt-4">
+    <h4>Editar Evento</h4>
+
+    <input class="form-control mb-2" [(ngModel)]="editando.titulo">
+    <textarea class="form-control mb-2" [(ngModel)]="editando.descripcion"></textarea>
+    <input class="form-control mb-2" [(ngModel)]="editando.imagen">
+    <input type="date" class="form-control mb-2" [(ngModel)]="editando.fecha">
+    <input class="form-control mb-2" [(ngModel)]="editando.hora">
+    <input class="form-control mb-2" [(ngModel)]="editando.locacion">
+
+    <button class="btn btn-success" (click)="guardarEdicion()">Guardar cambios</button>
+    <button class="btn btn-secondary mt-2" (click)="editando = null">Cancelar</button>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4 text-success fw-bold">Buscar actividades</h2>
+
+  <!-- Input de búsqueda -->
+  <div class="mb-4 d-flex justify-content-center">
+    <input
+      type="text"
+      class="form-control w-50"
+      placeholder="Buscar por título..."
+      [(ngModel)]="query"
+    />
+  </div>
+
+  <!-- Cards filtradas -->
+  <div class="d-flex flex-wrap justify-content-center gap-3">
+    <div *ngFor="let card of filteredCards" class="card" style="width: 18rem;">
+      <img [src]="card.image" class="card-img-top" alt="Imagen">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.text }}</p>
+        <button [ngClass]="card.color" class="btn w-100">{{ card.btn }}</button>
+      </div>
+    </div>
+  </div>
+</div>

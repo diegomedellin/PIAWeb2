@@ -1,0 +1,23 @@
+.register-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  backdrop-filter: blur(6px);
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-4px);
+}
+
+button, a.btn {
+  font-weight: 600;
+}

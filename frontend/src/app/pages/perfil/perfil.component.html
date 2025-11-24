@@ -1,0 +1,96 @@
+<div class="container mt-4">
+  <div class="perfil-container">
+
+    <!-- Columna izquierda: Reservas -->
+    <div class="perfil-reservas">
+      <h3>Mis Reservas</h3>
+
+      <div *ngIf="reservas && reservas.length > 0; else noReservas">
+
+        <div class="reservas">
+
+          <div class="reserva-card" *ngFor="let reserva of reservas">
+
+            <div class="reserva-imagen">
+              <img [src]="reserva.evento.imagen" alt="{{reserva.evento.titulo}}">
+            </div>
+
+            <div class="reserva-detalles">
+              <h4>{{ reserva.evento.titulo }}</h4>
+              <p>📅 {{ reserva.evento.fecha }}</p>
+              <p>🕒 {{ reserva.evento.hora }}</p>
+
+              <p class="estado" [ngClass]="reserva.estado.toLowerCase()">
+                {{ reserva.estado }}
+              </p>
+
+              <!-- SOLO SI ESTA ACTIVA -->
+              <button *ngIf="reserva.estado === 'Activa'"
+                      class="btn btn-danger mt-2"
+                      (click)="cancelar(reserva._id)">
+                Cancelar reserva
+              </button>
+
+            </div>
+          </div>
+
+        </div> <!-- .reservas -->
+
+      </div> <!-- fin ngIf -->
+
+      <ng-template #noReservas>
+        <p>No tienes reservas registradas</p>
+      </ng-template>
+
+    </div> <!-- fin .perfil-reservas -->
+
+    <!-- Columna derecha: Información del perfil editable -->
+    <div class="perfil-info">
+      <h3>Mi Perfil</h3>
+
+      <div *ngIf="usuario; else cargando" class="info-card">
+
+        <div class="perfil-foto-container">
+          <img [src]="fotoSegura" class="perfil-foto" />
+
+          <label class="btn-cambiar-foto">
+            Cambiar foto
+            <input
+              type="file"
+              (change)="cambiarFoto($event)"
+              accept="image/*"
+            />
+          </label>
+        </div>
+
+        <div class="info-detalles">
+          <label>Nombre:</label>
+          <input type="text" [(ngModel)]="usuario.nombre">
+
+          <label>Correo:</label>
+          <input type="email" [(ngModel)]="usuario.email" disabled>
+
+          <label>Teléfono:</label>
+          <input type="text" [(ngModel)]="usuario.telefono">
+
+          <label>Ciudad:</label>
+          <input type="text" [(ngModel)]="usuario.ciudad">
+
+          <label>Rol:</label>
+          <input type="text" [value]="usuario.rol" disabled />
+
+          <button class="btn-verde" (click)="guardarCambios()">
+            Guardar cambios
+          </button>
+        </div>
+      </div>
+
+      <ng-template #cargando>
+        <p>Cargando perfil...</p>
+      </ng-template>
+
+    </div> <!-- fin .perfil-info -->
+
+  </div> <!-- fin .perfil-container -->
+</div>
+

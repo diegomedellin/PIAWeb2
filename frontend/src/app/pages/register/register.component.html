@@ -1,0 +1,77 @@
+<div class="register-bg">
+  <div class="container mt-5">
+    <h2 class="text-center mb-4 text-success fw-bold">Crea tu cuenta en Mundialízate</h2>
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="mx-auto shadow p-4 rounded bg-white bg-opacity-90"
+      style="max-width: 420px;"
+    >
+      <div class="mb-3">
+        <label for="nombre" class="form-label fw-semibold">Nombre completo</label>
+        <input
+          type="text"
+          id="nombre"
+          class="form-control"
+          formControlName="nombre"
+          placeholder="Ej. Ana López"
+        />
+        <div *ngIf="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" class="text-danger small">
+          Ingresa tu nombre (mínimo 3 caracteres).
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Ej. usuario@correo.com"
+        />
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger small">
+          Ingresa un correo válido.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Mínimo 8 caracteres"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label fw-semibold">Confirmar contraseña</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          formControlName="confirmPassword"
+          placeholder="Repite la contraseña"
+        />
+        <div *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched" class="text-danger small">
+          Las contraseñas no coinciden.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mt-3" [disabled]="registerForm.invalid">
+        <i class="bi bi-person-check me-2"></i> Registrarme
+      </button>
+
+      
+    </form>
+    <div class="text-center mt-3">
+        <p class="mb-1">¿Ya tienes cuenta?</p>
+         
+        <button class="btn btn-success" routerLink="/iniciar-sesion" type="submit">Iniciar sesión</button>
+      
+      </div>
+  </div>
+</div>

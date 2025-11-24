@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+
+    <div *ngFor="let ev of eventos" class="card custom-card" style="width: 18rem;">
+
+      <img [src]="ev.imagen" class="card-img-top" [alt]="ev.titulo">
+
+      <div class="card-body">
+        <h5 class="card-title">{{ ev.titulo }}</h5>
+        <p class="card-text">{{ ev.descripcion }}</p>
+
+        <button class="btn btn-success w-100" 
+                [routerLink]="['/element', ev._id]">
+          Ver más
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
