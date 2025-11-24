@@ -1,0 +1,174 @@
+
+.container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   padding: 40px;
+}
+.perfil-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  flex-wrap: wrap; /* para que sea responsive */
+}
+
+/* Columna izquierda */
+.perfil-reservas {
+  flex: 2;
+}
+
+/* Columna derecha */
+.perfil-info {
+  flex: 1;
+}
+
+/* Tarjeta de perfil */
+.info-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  gap: 15px;
+}
+
+.perfil-foto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.perfil-foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #28a745;
+  margin-bottom: 10px;
+}
+
+/* Ocultar input real */
+.perfil-foto-container input[type="file"] {
+  display: none;
+}
+
+/* Estilizar label como botón */
+.btn-cambiar-foto {
+  background-color: #28a745;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn-cambiar-foto:hover {
+  background-color: #218838;
+}
+
+/* Detalles */
+.info-detalles p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.info-detalles label {
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: 8px;
+  display: block;
+}
+
+.info-detalles input,
+.info-detalles select {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 3px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.info-detalles .btn-verde {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.info-detalles .btn-verde:hover {
+  background-color: #218838;
+}
+
+
+.reservas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Tarjeta horizontal */
+.reserva-card {
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 500px;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+/* Efecto hover */
+.reserva-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Imagen del lado izquierdo */
+.reserva-imagen img {
+  width: 180px;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Detalles a la derecha */
+.reserva-detalles {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reserva-detalles h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.reserva-detalles p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+/* Degradados según estado */
+.confirmada {
+  background: linear-gradient(to right, #d4edda, #28a74533);
+}
+
+.pendiente {
+  background: linear-gradient(to right, #fff3cd, #ffc10733);
+}
+
+.cancelada {
+  background: linear-gradient(to right, #f8d7da, #dc354533);
+}
