@@ -1,3 +1,4 @@
+//SIN USO
 const mongoose = require("mongoose");
 
 const lugarSchema = new mongoose.Schema(

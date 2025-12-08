@@ -1,4 +1,5 @@
 const Evento = require("../models/evento.model");
+const Reserva = require("../models/reserva.model"); 
 
 // Crear un evento
 exports.crear = async (req, res) => {
@@ -45,13 +46,27 @@ exports.actualizar = async (req, res) => {
 };
 
 // Eliminar evento
+// Eliminar evento + sus reservas asociadas
 exports.eliminar = async (req, res) => {
   try {
-    await Evento.findByIdAndDelete(req.params.id);
-    res.json({ message: "Evento eliminado" });
+    const idEvento = req.params.id;
+
+    // 1️⃣ Borrar todas las reservas que apunten a este evento
+    await Reserva.deleteMany({ evento: idEvento });
+
+    // 2️⃣ Borrar el evento
+    const eliminado = await Evento.findByIdAndDelete(idEvento);
+
+    if (!eliminado) {
+      return res.status(404).json({ message: "Evento no encontrado" });
+    }
+
+    res.json({ message: "Evento y reservas asociadas eliminados" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Error al eliminar" });
   }
 };
+
 
 

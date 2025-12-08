@@ -1,3 +1,4 @@
+//SIN USO
 const Ciudad = require("../models/ciudad.model");
 const logger = require("../utils/logger");
 
