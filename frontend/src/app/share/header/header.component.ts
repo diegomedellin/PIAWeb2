@@ -13,18 +13,26 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent {
 
   constructor(
-    public auth: AuthService,
-    private router: Router
+    public auth: AuthService,   // servicio de autenticación para saber si el usuario está loggeado y su rol
+    private router: Router       // router para movernos entre pantallas
   ) {}
 
+  // Cierra la sesión del usuario y lo manda al login
   logout() {
     this.auth.logout();
     this.router.navigate(['/iniciar-sesion']);
   }
 
+  // Revisa si hay token guardado → o sea, si el usuario está loggeado
   isLogged() {
     return this.auth.isLogged();
   }
 
+  // Checa si el usuario activo tiene rol de admin (según el token)
+  isAdmin() {
+    return this.auth.isAdmin();
+  }
+
 }
+
 
