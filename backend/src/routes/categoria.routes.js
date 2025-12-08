@@ -1,3 +1,4 @@
+//SIN USO
 const router = require("express").Router();
 const ctrl = require("../controllers/categoria.controller");
 

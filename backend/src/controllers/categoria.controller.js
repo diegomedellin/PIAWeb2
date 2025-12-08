@@ -1,3 +1,4 @@
+//SIN USO
 const Categoria = require("../models/categoria.model");
 const Evento = require("../models/evento.model");
 

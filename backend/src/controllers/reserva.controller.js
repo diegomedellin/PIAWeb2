@@ -1,11 +1,33 @@
 const Reserva = require("../models/reserva.model");
 
 // Crear reserva
+// Crear reserva
 exports.crear = async (req, res) => {
   try {
+    const usuarioId = req.user.id;
+    const eventoId = req.body.evento;
+
+    if (!eventoId) {
+      return res.status(400).json({ message: "Evento requerido" });
+    }
+
+    // Verificar si ya existe una reserva ACTIVA para este usuario y evento
+    const yaExiste = await Reserva.findOne({
+      usuario: usuarioId,
+      evento: eventoId,
+      estado: "Activa"
+    });
+
+    if (yaExiste) {
+      return res.status(400).json({
+        message: "Ya tienes una reserva activa para este evento."
+      });
+    }
+
+    // Crear la reserva si no existe una activa
     const nueva = await Reserva.create({
-      usuario: req.user.id,
-      evento: req.body.evento
+      usuario: usuarioId,
+      evento: eventoId
     });
 
     res.status(201).json(nueva);
@@ -14,6 +36,7 @@ exports.crear = async (req, res) => {
     res.status(500).json({ message: "Error al crear reserva" });
   }
 };
+
 
 
 // Obtener reservas del usuario
